@@ -5,7 +5,17 @@ As I'm searching for Power Consumption of Meshtastic Devices, I also want
 to share the measurements of the devices I have and which I used for my builds.
 
 
+# Power Consumption
 
+```
+All Measurements have been done over USB Connection @5V with "Qway USB Measurement Device"
+```
+
+| Device | flashing |  not initialized | BT | Wifi |
+|----|----|----|----|----|
+| LilyGo Lora32 T3_V1.6.1 | @5.125V 40mA 0.2W | @5.125V 60mA 0.3W | @5.125V 60mA 0.3W | @5.125V 135mA 0.68W | 
+| Heltec V3 | @5.125V 40mA 0.2W | @5.115V 125mA 0.6W |  |
+| Heltec Wireless Stick Lite v3.1 | @5.125V 45mA 0.25W | @5.115V 110mA 0.56W | @5.115V 110mA 0.56W  | |
 
 # LICENSE
 
