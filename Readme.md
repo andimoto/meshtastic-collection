@@ -36,6 +36,23 @@ Will be used to read out a Victron MPPT 100/20 and forward to my other nodes whi
 |![](builds/rak-node-001/004.jpg)|![](builds/rak-node-001/005.jpg)|![](builds/rak-node-001/006.jpg)|
 |![](builds/rak-node-001/007.jpg)|![](builds/rak-node-001/009.jpg)|![](builds/rak-node-001/0011.jpg)|
 
+
+# Hints
+## RAK4630 with RUI (Convert RAK4631-R to RAK4631)
+I bought some cheaper (and older?) RAK4630 with RAK19003 Base Boards. But I had some trouble flashing Meshcore or https://github.com/oltaco/Adafruit_nRF52_Bootloader_OTAFIX .
+I found out that there was a RUI Bootloader `RUI_4.0.6_RAK4631` installed. But an Arduino Bootloader is necessary. Connected to a terminal `(minicom -D /dev/ttyACM1 -b 115200)` gave no output. I found some commands for RUI which printed out some version strings.
+One command `AT+BOOT` got into DFU Mode (can be checked with dmesg on Linux). But with that, I also could not use adafruit-nrfutil (or nrfutil) to update the RUI Bootloader.
+
+Then I tried the option with bluetooth. 1st connect to the device using the Android-App `nrf Connect` and the bring it to DFU. In the App the device `DFUTARG` was visible. So I could upload the Arduino Bootloader. Detailed description can be found here: https://docs.rakwireless.com/product-categories/wisblock/rak4631-r/dfu/
+Note: As mentioned, I could not use nrfutil. I had to go over bluetooth.
+
+I downloaded the `rak4631_factory_bootloader.zip` to by mobile phone and upload it via `nrf Connect` App and `DFUTARG` to the device. It instantly booted into normal DFU mode and was mounted by the System as storage device.
+
+More:
+https://forum.rakwireless.com/t/need-some-help-with-new-4630-dev-kit-cant-program-device/8812
+https://github.com/oltaco/WisCore_RAK4631_Bootloader
+
+
 # LICENSE
 
 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons Lizenzvertrag" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />Dieses Werk ist lizenziert unter einer <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Namensnennung - Weitergabe unter gleichen Bedingungen 4.0 International Lizenz</a>.
